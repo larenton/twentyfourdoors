@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Twenty Four Doors — Handcrafted advent experiences for adults</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Twenty Four Doors is an Australian studio making handcrafted advent experiences for adults. Our first product, Tinker & Tale, is a craft advent calendar available now in limited numbers." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Pinyon+Script&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --paper: #F6F2EA;
+    --paper-2: #EDE6D6;
+    --ink: #14110D;
+    --ink-soft: #2A241C;
+    --ink-mute: #6B6256;
+    --rule: #1F1B15;
+    --gold: #B08A3E;
+    --gold-soft: #C9A45C;
+    --maxw: 1200px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--paper); color: var(--ink);
+    font-family: "Cormorant Garamond", Georgia, serif; -webkit-font-smoothing: antialiased; }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+
+  .f-display { font-family: "Italiana", "Cormorant Garamond", serif; font-weight: 400; }
+  .f-script  { font-family: "Pinyon Script", cursive; font-weight: 400; }
+  .f-serif   { font-family: "Cormorant Garamond", Georgia, serif; font-weight: 400; }
+  .f-mono    { font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace; }
+
+  .eyebrow {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    text-transform: uppercase; letter-spacing: 0.22em;
+    font-size: 10.5px; color: var(--ink-mute);
+  }
+  .gold { color: var(--gold); }
+  .rule { border: 0; border-top: 1px solid var(--rule); width: 100%; }
+  .rule-soft { border: 0; border-top: 1px solid rgba(20,17,13,0.2); }
+  .rule-gold { border: 0; border-top: 1px solid var(--gold); }
+
+  .foil {
+    background: linear-gradient(105deg,#8c6a24 0%,#d6b366 25%,#b08a3e 45%,#e8cc84 55%,#a67f36 75%,#8c6a24 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 72px; }
+
+  /* NAV */
+  nav.site {
+    position: sticky; top: 0; z-index: 20;
+    background: rgba(246,242,234,0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(20,17,13,0.12);
+  }
+  nav.site .inner {
+    max-width: var(--maxw); margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 72px;
+  }
+  nav.site .mark {
+    font-family: "Italiana", serif; font-size: 17px; letter-spacing: 0.04em;
+  }
+  nav.site .links {
+    display: flex; gap: 32px;
+    font-family: "JetBrains Mono", monospace; font-size: 10px;
+    letter-spacing: 0.22em; text-transform: uppercase;
+  }
+  nav.site .links a { text-decoration: none; opacity: 0.9; transition: color .2s; }
+  nav.site .links a:hover { color: var(--gold); }
+
+  /* Entrance fades */
+  .fade { opacity: 0; transform: translateY(14px); transition: opacity .9s ease, transform .9s ease; }
+  .fade.in { opacity: 1; transform: translateY(0); }
+
+  /* HERO */
+  .hero { padding: 140px 0 0; }
+  .hero .grid {
+    display: grid; grid-template-columns: 1.2fr 1fr; gap: 72px; align-items: end;
+  }
+  .hero h1 {
+    font-family: "Italiana", serif; font-weight: 400;
+    font-size: clamp(56px, 8vw, 108px);
+    line-height: 0.96; letter-spacing: -0.015em; margin: 0;
+  }
+  .hero .script {
+    font-family: "Pinyon Script", cursive;
+    font-size: clamp(48px, 6.5vw, 90px);
+    line-height: 0.95; margin-left: 56px;
+    display: block;
+  }
+  .hero p.intro {
+    font-size: 18px; line-height: 1.7; color: var(--ink-soft);
+    padding-bottom: 16px; margin: 0;
+  }
+  .hero .intro .arrow { display: block; margin-top: 20px; }
+
+  /* CONTENTS */
+  .contents { padding: 112px 0 0; }
+  .contents .head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 20px 0;
+  }
+  .contents-row {
+    display: grid; grid-template-columns: 60px 220px 1fr 80px;
+    gap: 24px; padding: 22px 0; align-items: center;
+    text-decoration: none; color: inherit;
+    transition: background .25s, padding .25s;
+  }
+  .contents-row:hover { background: rgba(176,138,62,0.05); }
+  .contents-row .num {
+    font-family: "JetBrains Mono", monospace; font-size: 10.5px;
+    letter-spacing: 0.2em; color: var(--gold);
+  }
+  .contents-row .title { font-family: "Italiana", serif; font-size: 24px; }
+  .contents-row .sub {
+    font-family: "Cormorant Garamond", serif; font-style: italic;
+    font-size: 15px; color: var(--ink-mute);
+  }
+  .contents-row .open {
+    font-family: "JetBrains Mono", monospace; font-size: 10px;
+    letter-spacing: 0.22em; text-transform: uppercase; text-align: right;
+    color: var(--ink); transition: color .2s, transform .2s;
+  }
+  .contents-row:hover .open { color: var(--gold); transform: translateX(4px); }
+
+  /* ENTRY — common */
+  .entry { padding: 180px 0 0; }
+  .entry .grid {
+    display: grid; grid-template-columns: 260px 1fr; gap: 80px; align-items: start;
+  }
+  .entry .numeral {
+    font-family: "Italiana", serif;
+    font-size: 220px; line-height: 0.85; margin: 0;
+  }
+  .entry .numeral.foil { /* styled via .foil */ }
+  .entry .numeral.muted { color: var(--ink-mute); }
+  .entry .body { padding-top: 24px; max-width: 640px; }
+  .entry h2 {
+    font-family: "Italiana", serif; font-weight: 400;
+    font-size: 52px; line-height: 1.12; margin: 0 0 28px;
+  }
+  .entry .kicker {
+    font-family: "Cormorant Garamond", serif; font-style: italic;
+    font-size: 22px; color: var(--gold); margin: 0 0 28px;
+  }
+  .entry p {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 18px; line-height: 1.7; color: var(--ink-soft);
+    max-width: 560px; margin: 0 0 20px;
+  }
+  .entry .mute { color: var(--ink-mute); font-style: italic; }
+
+  .btn-ghost, .btn-gold {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: "JetBrains Mono", monospace; text-transform: uppercase;
+    letter-spacing: 0.2em; font-size: 10px;
+    padding: 14px 22px; border: 1px solid currentColor;
+    background: transparent; cursor: pointer; text-decoration: none;
+    transition: background .25s, color .25s;
+  }
+  .btn-ghost { color: var(--ink); }
+  .btn-ghost:hover { background: var(--ink); color: var(--paper); }
+  .btn-gold { color: var(--gold); }
+  .btn-gold:hover { background: var(--gold); color: var(--paper); }
+
+  /* Tinker & Tale typographic card (no photo) */
+  .product-card {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    max-width: 620px;
+    margin: 8px 0 36px;
+    background: var(--paper-2);
+    border: 1px solid rgba(20,17,13,0.18);
+    display: grid; place-items: center;
+    overflow: hidden;
+  }
+  .product-card::before, .product-card::after {
+    content: ""; position: absolute;
+    inset: 18px;
+    border: 1px solid var(--gold);
+    opacity: 0.55; pointer-events: none;
+  }
+  .product-card::after { inset: 22px; border-color: rgba(176,138,62,0.35); }
+  .product-card .pc-inner { text-align: center; padding: 40px 32px; }
+  .product-card .pc-eyebrow {
+    font-family: "JetBrains Mono", monospace; font-size: 10px;
+    letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--ink-mute); margin-bottom: 18px;
+  }
+  .product-card .pc-title {
+    font-family: "Italiana", serif;
+    font-size: clamp(36px, 5vw, 56px); line-height: 1.02;
+  }
+  .product-card .pc-title .amp {
+    font-family: "Pinyon Script", cursive;
+    font-size: 0.85em; vertical-align: -0.06em;
+  }
+  .product-card .pc-sub {
+    font-family: "Cormorant Garamond", serif; font-style: italic;
+    font-size: 18px; color: var(--ink-soft); margin-top: 14px;
+  }
+  .product-card .pc-rule {
+    height: 1px; width: 60px; background: var(--gold);
+    margin: 22px auto 0; opacity: 0.7;
+  }
+
+  /* Entry III (quiet) */
+  .entry.forthcoming { opacity: 0.8; }
+  .entry.forthcoming h2 { letter-spacing: 0.3em; }
+
+  /* Contact grid */
+  .contact-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 640px;
+  }
+  .contact-item .ci-title { font-family: "Italiana", serif; font-size: 24px; margin-bottom: 6px; }
+  .contact-item .ci-sub {
+    font-family: "Cormorant Garamond", serif; font-style: italic;
+    font-size: 15px; color: var(--ink-mute); margin-bottom: 14px;
+  }
+  .contact-item a.ci-link {
+    font-family: "JetBrains Mono", monospace; font-size: 10px;
+    letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold);
+    text-decoration: none; transition: color .2s;
+  }
+  .contact-item a.ci-link:hover { color: var(--ink); }
+
+  /* Footer */
+  footer.site {
+    margin-top: 160px; padding: 48px 0 36px;
+    border-top: 1px solid rgba(20,17,13,0.2);
+  }
+  footer.site .inner {
+    max-width: var(--maxw); margin: 0 auto; padding: 0 72px;
+    display: flex; justify-content: space-between; align-items: flex-end;
+    font-family: "JetBrains Mono", monospace; font-size: 10px;
+    letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-mute);
+  }
+  footer.site .mark {
+    font-family: "Italiana", serif; font-size: 22px;
+    letter-spacing: 0.04em; text-transform: none;
+    color: var(--ink); margin-bottom: 10px;
+  }
+  footer.site .right { text-align: right; line-height: 2; }
+  footer.site .right .abn { opacity: 0.65; }
+
+  /* Responsive */
+  @media (max-width: 880px) {
+    .wrap, nav.site .inner, footer.site .inner { padding-left: 28px; padding-right: 28px; }
+    .hero .grid { grid-template-columns: 1fr; gap: 40px; }
+    .hero .script { margin-left: 24px; }
+    .contents-row { grid-template-columns: 40px 1fr 60px; }
+    .contents-row .sub { display: none; }
+    .entry .grid { grid-template-columns: 1fr; gap: 24px; }
+    .entry .numeral { font-size: 140px; }
+    .entry h2 { font-size: 38px; }
+    .contact-grid { grid-template-columns: 1fr; gap: 28px; }
+    footer.site .inner { flex-direction: column; align-items: flex-start; gap: 24px; }
+    footer.site .right { text-align: left; }
+    nav.site .links { gap: 16px; }
+    nav.site .links a:nth-child(4) { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="site">
+  <div class="inner">
+    <div class="mark">Twenty Four Doors</div>
+    <div class="links">
+      <a href="#studio">Studio</a>
+      <a href="#works">Works</a>
+      <a href="#forthcoming">Forthcoming</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero wrap" id="top">
+  <div class="grid fade">
+    <div>
+      <div class="eyebrow" style="margin-bottom:36px">Index · Catalogue of Works · MMXXVI</div>
+      <h1>Advent boxes</h1>
+      <h1>made for</h1>
+      <span class="f-script foil script">adults.</span>
+    </div>
+    <p class="intro">
+      Twenty Four Doors is an Australian studio making advent experiences — different every year, for different people. Each one is built around its own idea, limited in number, and designed to make December feel like it means something.
+      <span class="eyebrow gold arrow">Four entries follow ↓</span>
+    </p>
+  </div>
+</section>
+
+<!-- CONTENTS -->
+<section class="contents wrap fade">
+  <hr class="rule" />
+  <div class="head">
+    <div class="eyebrow">Contents</div>
+    <div class="eyebrow">Four Entries</div>
+  </div>
+  <hr class="rule-soft" />
+
+  <a class="contents-row" href="#studio">
+    <span class="num">I</span>
+    <span class="title">The Studio</span>
+    <span class="sub">How Twenty Four Doors came to be</span>
+    <span class="open">Open →</span>
+  </a>
+  <hr class="rule-soft" />
+
+  <a class="contents-row" href="#works">
+    <span class="num">II</span>
+    <span class="title">Tinker &amp; Tale</span>
+    <span class="sub">First edition · Available now · Limited stock</span>
+    <span class="open">Open →</span>
+  </a>
+  <hr class="rule-soft" />
+
+  <a class="contents-row" href="#forthcoming">
+    <span class="num">III</span>
+    <span class="title">The Second Box</span>
+    <span class="sub">Coming October 2026</span>
+    <span class="open">Open →</span>
+  </a>
+  <hr class="rule-soft" />
+
+  <a class="contents-row" href="#contact">
+    <span class="num">IV</span>
+    <span class="title">Contact</span>
+    <span class="sub">Trade, press, and general enquiries</span>
+    <span class="open">Open →</span>
+  </a>
+  <hr class="rule-soft" />
+</section>
+
+<!-- I · STUDIO -->
+<section class="entry wrap fade" id="studio">
+  <div class="grid">
+    <div>
+      <div class="eyebrow" style="margin-bottom:12px">N° I · The Studio</div>
+      <div class="numeral foil">I</div>
+    </div>
+    <div class="body">
+      <h2>Started as a gift. Turned into a studio.</h2>
+      <p>Every year, Luke makes Kat an advent calendar. Not a bought one — a designed, one-of-a-kind experience built around a theme: a story, a journey, a game, a set of things to make. They call it Katvent.</p>
+      <p>After nearly a decade of those calendars, it became clear that the best ones had something in common: they gave December a shape. Something to look forward to each day, and something to show for it at the end.</p>
+      <p>Twenty Four Doors is Luke and Kat's attempt to make that experience available to everyone. Not one box repeated annually — a growing catalogue of different experiences, for different people. Each product starts life as a Katvent idea, gets tested and refined, and eventually becomes something anyone can give — or keep for themselves.</p>
+    </div>
+  </div>
+</section>
+
+<!-- II · TINKER & TALE -->
+<section class="entry wrap fade" id="works">
+  <div class="grid">
+    <div>
+      <div class="eyebrow" style="margin-bottom:12px">N° II · First Edition</div>
+      <div class="numeral foil">II</div>
+    </div>
+    <div class="body">
+      <h2>Tinker <span class="f-script" style="font-size:44px">&amp;</span> Tale</h2>
+      <p class="kicker">A craft advent calendar for adults. 24 days, 3 workshops, one gift at the end.</p>
+
+      <div class="product-card" role="img" aria-label="Tinker &amp; Tale — first edition">
+        <div class="pc-inner">
+          <div class="pc-eyebrow">First Edition · MMXXV</div>
+          <div class="pc-title">Tinker <span class="amp foil">&amp;</span> Tale</div>
+          <div class="pc-rule"></div>
+          <div class="pc-sub">A craft advent calendar for adults.</div>
+        </div>
+      </div>
+
+      <p>On December 1st, a letter arrives inside the box — an invitation to join the elf workshop. From there, the calendar unfolds across three departments: <em>Paper Palace</em> (origami and paper craft), <em>Cracker Château</em> (building four Christmas crackers from scratch), and <em>Timber Terraces</em> (a hand-assembled wooden bauble). Each day opens a new envelope with materials and instructions. On December 24th, the final door reveals a gift — a thank-you for seeing it through.</p>
+      <p>Everything needed for all 24 days is included in the box. It's designed as a gift for a creative adult — a partner, a friend, someone who'd genuinely enjoy making things with their hands over the course of December.</p>
+      <p>Priced at $100–$150. Handmade in Sydney. First edition only — not being reprinted.</p>
+      <p style="display:flex; gap:16px; align-items:center; flex-wrap:wrap; margin-top:8px;">
+        <a class="btn-gold" href="https://instagram.com/tinkerandtale" target="_blank" rel="noopener">Follow @tinkerandtale →</a>
+        <span class="eyebrow">Limited stock remaining · Handmade in Australia</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- III · FORTHCOMING -->
+<section class="entry forthcoming wrap fade" id="forthcoming">
+  <div class="grid">
+    <div>
+      <div class="eyebrow" style="margin-bottom:12px">N° III · Forthcoming</div>
+      <div class="numeral muted">III</div>
+    </div>
+    <div class="body">
+      <h2>· · · · ·</h2>
+      <p class="mute">Something new is coming in October 2026 — and it's nothing like Tinker & Tale. Where our first box was a solo craft experience for adults, the next one is built for the whole family. Think less workbench, more game night. Follow along on Instagram for updates as it comes together.</p>
+      <div class="eyebrow" style="margin-top:28px">October · Two thousand twenty-six</div>
+    </div>
+  </div>
+</section>
+
+<!-- IV · CONTACT -->
+<section class="entry wrap fade" id="contact">
+  <div class="grid">
+    <div>
+      <div class="eyebrow" style="margin-bottom:12px">N° IV · Contact</div>
+      <div class="numeral foil">IV</div>
+    </div>
+    <div class="body">
+      <h2>Get in touch.</h2>
+      <p style="margin-bottom:40px">We're a small studio and we read everything. Whether you're a stockist, a journalist, a potential collaborator, or just have a question — drop us a line.</p>
+
+      <div class="contact-grid">
+        <div class="contact-item">
+          <div class="ci-title">Trade</div>
+          <div class="ci-sub">Stockists and wholesale enquiries.</div>
+          <a class="ci-link" href="/cdn-cgi/l/email-protection#ef8b80809ddddaaf9b988a819b9689809a9d8b80809d9cc18c8082c18e9ad09c9a8d858a8c9bd2bb9d8e8b8acadddf8a819e9a869d96">Write →</a>
+        </div>
+        <div class="contact-item">
+          <div class="ci-title">Press</div>
+          <div class="ci-sub">Editors, reviewers, and media.</div>
+          <a class="ci-link" href="/cdn-cgi/l/email-protection#197d76766b2b2c596d6e7c776d607f766c6b7d76766b6a377a767437786c266a6c7b737c7a6d24496b7c6a6a3c2b297c77686c706b60">Write →</a>
+        </div>
+        <div class="contact-item">
+          <div class="ci-title">Partnerships</div>
+          <div class="ci-sub">Collaborations and brand work.</div>
+          <a class="ci-link" href="/cdn-cgi/l/email-protection#3f5b50504d0d0a7f4b485a514b4659504a4d5b50504d4c115c5052115e4a004c4a5d555a5c4b026f5e4d4b515a4d4c57564f">Write →</a>
+        </div>
+        <div class="contact-item">
+          <div class="ci-title">General</div>
+          <div class="ci-sub">Questions, feedback, hello.</div>
+          <a class="ci-link" href="/cdn-cgi/l/email-protection#284c47475a1a1d685c5f4d465c514e475d5a4c47475a5b064b474506495d">Write →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site">
+  <div class="inner">
+    <div>
+      <div class="mark">Twenty Four Doors</div>
+      <div>Sydney, Australia</div>
+    </div>
+    <div class="right">
+      <div><a href="/cdn-cgi/l/email-protection#44202b2b367671043033212a303d222b3136202b2b36376a272b296a2531" style="color:inherit; text-decoration:none"><span class="__cf_email__" data-cfemail="12767d7d602027526665777c666b747d6760767d7d60613c717d7f3c7367">[email&#160;protected]</span></a></div>
+      <div><a href="https://instagram.com/tinkerandtale" target="_blank" rel="noopener" style="color:inherit; text-decoration:none">Instagram · @tinkerandtale</a></div>
+      <div style="margin-top:10px">© MMXXVI · Twenty Four Doors</div>
+      <div class="abn">ABN 52 115 445 788</div>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Entrance fades on scroll — subtle parallax-ish reveal
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) if (e.isIntersecting) e.target.classList.add('in');
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade').forEach(el => io.observe(el));
+
+  // Gentle smooth scroll (native behavior covers it; this just softens focus jumps)
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const id = a.getAttribute('href').slice(1);
+      const t = document.getElementById(id);
+      if (!t) return;
+      e.preventDefault();
+      t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      history.replaceState(null, '', '#' + id);
+    });
+  });
+</script>
+
+</body>
+</html>
