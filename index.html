@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <title>Twenty Four Doors — Handcrafted advent experiences for adults</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="Twenty Four Doors is an Australian studio making handcrafted advent experiences for adults. Our first product, Tinker & Tale, is a craft advent calendar available now in limited numbers." />
+<meta name="description" content="Twenty Four Doors is an Australian studio making handcrafted advent experiences for adults. Our flagship, Tinker & Tale, is a handcrafted Christmas for grown-ups — available now in limited numbers. Three new experiences arrive in 2027." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Pinyon+Script&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -209,7 +209,19 @@
 
   /* Entry III (quiet) */
   .entry.forthcoming { opacity: 0.8; }
-  .entry.forthcoming h2 { letter-spacing: 0.3em; }
+  .sealed-list {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+    max-width: 560px; margin: 12px 0 36px;
+  }
+  .sealed {
+    border: 1px solid rgba(176,138,62,0.45); padding: 22px 18px 20px;
+    text-align: center; background: rgba(237,230,214,0.5);
+  }
+  .sealed .num {
+    display: block; font-family: "JetBrains Mono", monospace; font-size: 10px;
+    letter-spacing: 0.22em; color: var(--gold); margin-bottom: 8px;
+  }
+  .sealed .s-title { font-family: "Italiana", serif; font-size: 22px; color: var(--ink-mute); }
 
   /* Contact grid */
   .contact-grid {
@@ -257,6 +269,8 @@
     .entry .numeral { font-size: 140px; }
     .entry h2 { font-size: 38px; }
     .contact-grid { grid-template-columns: 1fr; gap: 28px; }
+    .sealed-list { gap: 10px; }
+    .sealed { padding: 18px 8px 16px; }
     footer.site .inner { flex-direction: column; align-items: flex-start; gap: 24px; }
     footer.site .right { text-align: left; }
     nav.site .links { gap: 16px; }
@@ -312,15 +326,15 @@
   <a class="contents-row" href="#works">
     <span class="num">II</span>
     <span class="title">Tinker &amp; Tale</span>
-    <span class="sub">First edition · Available now · Limited stock</span>
+    <span class="sub">Our flagship · Available now · Limited stock</span>
     <span class="open">Open →</span>
   </a>
   <hr class="rule-soft" />
 
   <a class="contents-row" href="#forthcoming">
     <span class="num">III</span>
-    <span class="title">The Second Box</span>
-    <span class="sub">Coming October 2026</span>
+    <span class="title">Three New Doors</span>
+    <span class="sub">Arriving 2027 · Register for updates</span>
     <span class="open">Open →</span>
   </a>
   <hr class="rule-soft" />
@@ -354,24 +368,24 @@
 <section class="entry wrap fade" id="works">
   <div class="grid">
     <div>
-      <div class="eyebrow" style="margin-bottom:12px">N° II · First Edition</div>
+      <div class="eyebrow" style="margin-bottom:12px">N° II · Our Flagship</div>
       <div class="numeral foil">II</div>
     </div>
     <div class="body">
       <h2>Tinker <span class="f-script" style="font-size:44px">&amp;</span> Tale</h2>
-      <p class="kicker">A craft advent calendar for adults. 24 days, 3 workshops, one gift at the end.</p>
+      <p class="kicker">A handcrafted Christmas for grown-ups. 24 days, 3 workshops, one gift at the end.</p>
 
       <div class="product-card" role="img" aria-label="Tinker &amp; Tale — first edition">
         <div class="pc-inner">
           <div class="pc-eyebrow">First Edition · MMXXV</div>
           <div class="pc-title">Tinker <span class="amp foil">&amp;</span> Tale</div>
           <div class="pc-rule"></div>
-          <div class="pc-sub">A craft advent calendar for adults.</div>
+          <div class="pc-sub">An experience as unique as they are.</div>
         </div>
       </div>
 
       <p>On December 1st, a letter arrives inside the box — an invitation to join the elf workshop. From there, the calendar unfolds across three departments: <em>Paper Palace</em> (origami and paper craft), <em>Cracker Château</em> (building four Christmas crackers from scratch), and <em>Timber Terraces</em> (a hand-assembled wooden bauble). Each day opens a new envelope with materials and instructions. On December 24th, the final door reveals a gift — a thank-you for seeing it through.</p>
-      <p>Everything needed for all 24 days is included in the box. It's designed as a gift for a creative adult — a partner, a friend, someone who'd genuinely enjoy making things with their hands over the course of December.</p>
+      <p>Everything needed for all 24 days is included in the box. It's designed as a gift for a creative adult — a partner, a friend, someone who'd love to slow down and make something with their hands over the course of December. Unhurried, heritage-minded, and made to be kept long after the last door is opened.</p>
       <p>Priced at $150. Designed in Sydney, assembled in Australia. First edition only — not being reprinted.</p>
       <p style="display:flex; gap:16px; align-items:center; flex-wrap:wrap; margin-top:8px;">
         <a class="btn-gold" href="https://tinker-and-tale.company.site" target="_blank" rel="noopener">Go to Tinker &amp; Tale →</a>
@@ -389,9 +403,21 @@
       <div class="numeral muted">III</div>
     </div>
     <div class="body">
-      <h2>· · · · ·</h2>
-      <p class="mute">Something new is coming in October 2026 — and it's nothing like Tinker & Tale. Where our first box was a solo craft experience for adults, the next one is built for the whole family. Think less workbench, more game night. Follow along on Instagram for updates as it comes together.</p>
-      <div class="eyebrow" style="margin-top:28px">October · Two thousand twenty-six</div>
+      <h2>Three new doors.</h2>
+      <p>Three new experiences are taking shape in the studio for 2027. Like everything we make, each began life as a Katvent — tested and refined at home long before it ever went near a box.</p>
+      <p class="mute">For now, the details stay behind closed doors. Register below and you'll be among the first to know when they open.</p>
+
+      <div class="sealed-list" aria-label="Three forthcoming experiences">
+        <div class="sealed"><span class="num">N° 1</span><span class="s-title">Sealed</span></div>
+        <div class="sealed"><span class="num">N° 2</span><span class="s-title">Sealed</span></div>
+        <div class="sealed"><span class="num">N° 3</span><span class="s-title">Sealed</span></div>
+      </div>
+
+      <p style="display:flex; gap:16px; align-items:center; flex-wrap:wrap; margin-top:8px;">
+        <a class="btn-gold" href="mailto:door25@twentyfourdoors.com.au?subject=Register%20my%20interest%3A%20Twenty%20Four%20Doors%202027&amp;body=Hello%20Twenty%20Four%20Doors%2C%0A%0APlease%20add%20me%20to%20your%20list%20for%20updates%20on%20the%20three%20new%20experiences%20arriving%20in%202027.%20I%27d%20love%20to%20be%20among%20the%20first%20to%20know%20when%20the%20doors%20open.%0A%0AThank%20you.">Register for updates →</a>
+        <span class="eyebrow">Opens your mail app · Just hit send</span>
+      </p>
+      <div class="eyebrow" style="margin-top:28px">Two thousand twenty-seven</div>
     </div>
   </div>
 </section>
@@ -464,7 +490,7 @@
       if (!t) return;
       e.preventDefault();
       t.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      history.replaceState(null, '', '#' + id);
+      try { history.replaceState(null, '', '#' + id); } catch (_) { /* sandboxed previews block this */ }
     });
   });
 </script>
